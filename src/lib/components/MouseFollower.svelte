@@ -3,6 +3,9 @@
 	import { spring } from 'svelte/motion';
 
 	export let desiredPos: { x: number; y: number };
+	export let variant: 'normal' | 'pink' = 'normal';
+	export let mainText: string;
+	export let subText: string | undefined;
 
 	let el: HTMLDivElement;
 	let coords = spring(desiredPos);
@@ -28,21 +31,25 @@
 	on:mouseleave={reset}
 >
 	<div
-		class="rounded-full bg-white absolute flex items-center justify-center p-9 leading-6 sized"
+		class="rounded-full {variant === 'pink'
+			? 'bg-rose-300'
+			: 'bg-white'}  absolute flex items-center justify-center p-9 leading-6 sized"
 		style:left="{$coords.x}%"
 		style:top="{$coords.y}%"
 		style:--size="{$size}px"
 	>
-		WATCH REEL
+		{mainText}
 	</div>
-	<div
-		style:left="{$coords.x}%"
-		style:top="calc({$coords.y}% + {$size}px)"
-		style:--size="{bottomSize}px"
-		class="absolute text-white sized"
-	>
-		BASIC/DEPT® 2010-∞
-	</div>
+	{#if subText}
+		<div
+			style:left="{$coords.x}%"
+			style:top="calc({$coords.y}% + {$size}px)"
+			style:--size="{bottomSize}px"
+			class="absolute text-white sized"
+		>
+			{subText}
+		</div>
+	{/if}
 </div>
 
 <style>

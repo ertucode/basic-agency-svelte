@@ -46,7 +46,8 @@
 	bind:this={wrapper}
 	class="absolute bottom-5 text-white text-3xl cursor-grab mix-blend-difference select-none"
 	style:left="{percentage}%"
-	style="will-change: left; transform: translateX(-50%);"
+	style:transition={moving ? '' : 'left 150ms ease-in-out'}
+	style=" transform: translateX(-50%);"
 >
 	<div>{minuteSecond(currentTime)}/{minuteSecond(duration)}</div>
 </div>

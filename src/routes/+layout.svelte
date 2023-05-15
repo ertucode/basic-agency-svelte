@@ -4,6 +4,6 @@
 </script>
 
 <Navbar />
-<main>
+<main class="bg-neutral-50 scroll-smooth text-gray-700 selection:text-white selection:bg-gray-800">
 	<slot />
 </main>
