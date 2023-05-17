@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ComponentProps } from 'svelte';
 	import Engagement from './Engagement.svelte';
+	import MouseFollower from '../MouseFollower.svelte';
 
 	const engagements: ComponentProps<Engagement>[] = [
 		{
@@ -45,12 +46,16 @@
 </div>
 <h2 class="pt-20 text-6xl font-bold w-min">FEATURED ENGAGEMENTS</h2>
 <div class="full-width-container">
-	<ul class="list-none flex gap-6 items-stretch py-32 overflow-x-scroll scrollbar-hide">
+	<ul
+		class="list-none flex gap-6 items-stretch py-32 overflow-x-scroll scrollbar-hide"
+		data-scroll-parent
+	>
 		{#each engagements as engagement}
 			<li class="flex-[0_0_var(--grid-size)]">
 				<Engagement {...engagement} />
 			</li>
 		{/each}
+		<MouseFollower desiredPos={{ x: 90, y: 50 }} mainText="DRAG" forDrag variant="pink" />
 	</ul>
 </div>
 

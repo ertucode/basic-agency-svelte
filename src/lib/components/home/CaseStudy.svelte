@@ -46,6 +46,7 @@
 	div :global([src]) {
 		width: 100%;
 		height: 100%;
+		min-height: 1px; /** Trigger lazy load*/
 		vertical-align: middle;
 		transform: scale(1.1);
 		transition: transform 250ms ease-in-out;
